@@ -28,7 +28,7 @@ router.post("/order", function (req, res, next) {
       openOrders: [],
     },
   ];
-  var openOrders = [
+  var openOrdersJson = [
     {
       id: 972,
       bookingfee: 6.09,
@@ -417,6 +417,10 @@ router.post("/order", function (req, res, next) {
       popUpClose: 0,
     },
   ];
+
+  if (req.body.openOrders) {
+    responseJson = [{ ...responseJson[0], openOrders: openOrdersJson }];
+  }
   res.json(responseJson);
 });
 
